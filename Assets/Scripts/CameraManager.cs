@@ -17,7 +17,8 @@ namespace LeikirTest
         {
             m_cam = Camera.main.transform;
             var character = (LeikirTest.CharacterController)FindObjectOfType(typeof(LeikirTest.CharacterController)); // Assume there is only one character
-            // In an actual production, player character(s) would be dealt by a PlayerManager, which would have a GetPlayers() accessor
+            // In an actual production, player character(s) would be dealt by a PlayerManager, which would expose a GetPlayers() accessor
+            Debug.Assert(character != null, "No LeikirTest.CharacterController found on scene");
             m_character = character.transform;
         }
 
