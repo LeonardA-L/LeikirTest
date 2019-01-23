@@ -16,6 +16,7 @@ namespace LeikirTest
             rb = GetComponent<Rigidbody>();
             lastDirection = transform.forward;
             Debug.Assert(m_controlStrategy != null, "No control strategy provided");
+            m_controlStrategy.Init(this);
         }
 
         void FixedUpdate()
@@ -27,7 +28,7 @@ namespace LeikirTest
         void Update()
         {
             transform.forward = Vector3.Slerp(transform.forward, lastDirection, m_controlStrategy.RotationSpeed * Time.deltaTime);
-                                                                                                        //Note: Here the direction lerp is purely cosmetic. Direction does not impact movement (cf how FixedUpdate does not take direction into account)
+            //Note: Here the orientation lerp is purely cosmetic. Direction does not impact movement (cf how FixedUpdate does not take direction into account)
         }
     }
 }
